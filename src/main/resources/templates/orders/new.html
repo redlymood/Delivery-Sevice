@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+<a href="/customers/new">Добавить получателя</a>
+
+<form th:method="POST" th:action="@{/orders}" th:object="${order}">
+    <lable for="customer">Выбрать получателя</lable>
+    <select th:object="${order}" th:field="*{customer}" id="customer">
+        <option th:each="c: ${customers}" th:value="${c.getId()}" th:text="${c.getFullName}">
+        </option>
+    </select>
+    <br/>
+    <lable for="products">Выбрать продукты</lable>
+    <tr th:each="product, iterStat : ${productList}" th:id="'group-' + ${product.getId()}" >
+        <br/>
+        <td th:text="${product.getName()}">Product name</td>
+        <td th:text="${product.getPrice()}">Product's price</td>
+        <td><input type="checkbox" th:field="*{products}" th:value="${iterStat.count}"/>
+        </td>
+    </tr>
+    <br/>
+    <input type="submit" value="Оформить заказ"/>
+</form>
+
+</body>
+</html>

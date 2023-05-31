@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+<div th:each="delivery : ${deliveries}">
+    <a th:href="@{/deliveries/{id}(id=${delivery.getId()})}"
+       th:text="${delivery.getId() + ', ' + delivery.getStatus()}">user</a>
+</div>
+
+<br/>
+<hr/>
+
+<a href="/deliveries/new">Добавить доставку</a>
+
+</body>
+</html>

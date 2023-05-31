@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update delivery</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/deliveries/{id}(id=${delivery.getId()})}" th:object="${delivery}">
+    <lable for="order">Выберите заказ</lable>
+    <select th:object="${delivery}" th:field="*{id}" id="order">
+        <option th:each="order: ${orders}" th:value="${order.getId()}" th:text="${order.getId()}">
+        </option>
+    </select>
+    <br/>
+    <lable for="courier">Выберите курьера</lable>
+    <select th:object="${delivery}" th:field="*{id}" id="courier">
+        <option th:each="courier: ${couriers}" th:value="${courier.getId()}" th:text="${courier.getFullName()}">
+        </option>
+    </select>
+    <br/>
+    <lable for="status">Выберите статус</lable>
+    <select th:object="${delivery}" th:field="*{status}" id="status">
+        <option Доставлен></option>
+        <option Не доставлен></option>
+    </select>
+    <br/>
+    <lable for="paymentMethod">Выберите способ оплаты</lable>
+    <select th:object="${delivery}" th:field="*{paymentMethod}" id="paymentMethod">
+        <option>Наличными</option>
+        <option>Картой</option>
+    </select>
+    <input type="submit" value="Изменить!"/>
+</form>
+
+</body>
+</html>

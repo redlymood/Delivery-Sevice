@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New person</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/customers}" th:object="${customer}">
+    <label for="fullName">Введите полное имя: </label>
+    <input type="text" th:field="*{fullName}" id="fullName"/>
+    <div style="color:red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">fullName Error</div>
+    <br/>
+    <label for="phoneNumber">Введите номер телефона: </label>
+    <input type="text" th:field="*{phoneNumber}" id="phoneNumber"/>
+    <div style="color:red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone Number Error</div>
+    <br/>
+    <label for="street">Введите улицу: </label>
+    <input type="text" th:field="*{street}" id="street"/>
+    <div style="color:red" th:if="${#fields.hasErrors('street')}" th:errors="*{street}">Street Error</div>
+    <br/>
+    <label for="house">Введите дом: </label>
+    <input type="text" th:field="*{house}" id="house"/>
+    <div style="color:red" th:if="${#fields.hasErrors('house')}" th:errors="*{house}">House Error</div>
+    <br/>
+    <label for="apartment">Введите номер квартиры: </label>
+    <input type="text" th:field="*{apartment}" id="apartment"/>
+    <div style="color:red" th:if="${#fields.hasErrors('apartment')}" th:errors="*{apartment}">Apartment Error</div>
+    <br/>
+    <input type="submit" value="Добавить"/>
+</form>
+
+</body>
+</html>

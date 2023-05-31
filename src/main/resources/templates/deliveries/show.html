@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+<p th:text="${'Доставка №' + delivery.getId()}">VALUE</p>
+<p th:text="${'Заказ №' + delivery.getOrder().getId()}">VALUE</p>
+<p th:text="${'Курьер: ' + delivery.getCourier().getFullName()}">VALUE</p>
+<p th:text="${'Статус: ' + delivery.getStatus()}">VALUE</p>
+<p th:text="${'Метод оплаты: ' + delivery.getPaymentMethod()}">VALUE</p>
+
+<form th:method="GET" th:action="@{/deliveries/{id}/edit(id=${delivery.getId()})}">
+    <input type="submit" value="Редактировать"/>
+</form>
+
+<form th:method="DELETE" th:action="@{/deliveries/{id}(id=${delivery.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>

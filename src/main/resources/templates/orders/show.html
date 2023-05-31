@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Order</title>
+</head>
+<body>
+<p th:text="${order.getId() + ', ' + order.getCustomer().getFullName()}">VALUE</p>
+<div th:each="product : ${order.getProducts()}">
+    <a th:text="${product.getName() + ', ' + product.getPrice()}">product</a>
+</div>
+
+<form th:method="GET" th:action="@{/orders/{id}/edit(id=${order.getId()})}">
+    <input type="submit" value="Редактировать"/>
+</form>
+<form th:method="DELETE" th:action="@{/orders/{id}(id=${order.getId()})}">
+    <input type="submit" value="Удалить">
+</form>
+<hr/>
+<a href="/orders/new">Создать еще один заказ</a>
+</body>
+</html>
